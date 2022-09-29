@@ -1,41 +1,44 @@
 ---
 title: "Lab 4 - Introduction to RStudio and R Markdown. Presentations"
+author: "Jialing Geng"
+date: "October 1, 2022"
 output:
   html_document:
     toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- This is a comment in R Markdown (and regular markdown, such as in Jupyter)-->
+
 <!-- The dashes below are not part of the YAML block above, -->
+
 <!-- they insert a horizontal line after the ToC -->
 
---- 
+------------------------------------------------------------------------
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-In Lab 4,
-you will learn how to use,
-edit and create a R Markdown document (like this one) using RStudio.
-You should follow the instructions in this document to complete the assignment.
-Knit this document to view the nicely rendered HTML,
-which can make it easier to read the questions.
+In Lab 4, you will learn how to use, edit and create a R Markdown
+document (like this one) using RStudio. You should follow the
+instructions in this document to complete the assignment. Knit this
+document to view the nicely rendered HTML, which can make it easier to
+read the questions.
 
-If you need help as you use R Markdown in this lab and others in the future, consult the following resources:
+If you need help as you use R Markdown in this lab and others in the
+future, consult the following resources:
 
-- [Cheat sheet](https://rmarkdown.rstudio.com/lesson-15.html) 
-- [Home page with guides](https://rmarkdown.rstudio.com/docs/)
-- [Reference book](https://bookdown.org/yihui/rmarkdown/)
+-   [Cheat sheet](https://rmarkdown.rstudio.com/lesson-15.html)
+-   [Home page with guides](https://rmarkdown.rstudio.com/docs/)
+-   [Reference book](https://bookdown.org/yihui/rmarkdown/)
 
-The below is a code chunk, 
-but instead of using the `r` engine
-we're creating and alert block
-that will make the question show up with a blue background 
-in the HTML output.
-Unfortunately,
-this creates and error when exporting to PDF,
-so it can only be used for HTML.
+The below is a code chunk, but instead of using the `r` engine we're
+creating and alert block that will make the question show up with a blue
+background in the HTML output. Unfortunately, this creates and error
+when exporting to PDF, so it can only be used for HTML.
 
 ```{block, type="alert alert-info"}
 ## Submission Instructions
@@ -57,28 +60,22 @@ You receive mark for submitting your lab correctly, please follow these instruct
 - Include a clickable link to your GitHub repo for the lab just below this cell (it should look something like this https://github.ubc.ca/MDS-2022-23/DSCI_521_labX_yourcwl.
 ```
 
-YOUR LAB GITHUB REPO LINK GOES HERE
-
+<https://github.ubc.ca/MDS-2022-23/DSCI_521_lab4_guaiacol>
 
 ## Editing R Markdown documents
 
-This document is called an R Markdown document.
-It is a literate code document,
-similar to Jupyter notebooks where you can write code and view its outputs.
-To start,
-let's set our working directory
-by creating a new R Project for lab 4.
+This document is called an R Markdown document. It is a literate code
+document, similar to Jupyter notebooks where you can write code and view
+its outputs. To start, let's set our working directory by creating a new
+R Project for lab 4.
 
 ### Text and rendering R Markdown documents
 
-In a R Markdown document any line of text not in a code chunk
-(like this line of text)
-will be formatted using Markdown.
-Similar to JupyterLab,
-you can also use HTML and LaTeX here to do more advanced formatting.
-To run a code chunk,
-you can press the green play button
-in the top right corner of the chunk.
+In a R Markdown document any line of text not in a code chunk (like this
+line of text) will be formatted using Markdown. Similar to JupyterLab,
+you can also use HTML and LaTeX here to do more advanced formatting. To
+run a code chunk, you can press the green play button in the top right
+corner of the chunk.
 
 ```{block, type="alert alert-info"}
 #### Question 1
@@ -89,7 +86,7 @@ To render the HTML files we are going to create, the first step is to activate G
 
 ```
 
-YOUR ANSWER GOES HERE
+<https://github.com/THF-d8/new_repo>
 
 ```{block, type="alert alert-info"}
 #### Question 2
@@ -98,10 +95,14 @@ rubric={mechanics:1}
 Create a new code chunk below using the r language engine that runs some R code
 (it does not need to be complicated,
 but it should have an output).
-Ensure that you can render/knit the document after you add that chunk.
+Ensure that you can render/knit the document after you add that chunk
 ```
 
-YOUR ANSWER GOES HERE
+```{r}
+for (i in list(1, 2, 3, 4)){
+  print(i**2)
+}
+```
 
 ```{block, type="alert alert-info"}
 #### Question 3
@@ -114,7 +115,11 @@ Don't forget to knit/render the document
 after you make this change to ensure everything is still working.
 ```
 
-YOUR ANSWER GOES HERE
+```{r squared list elements}
+for (i in list(1, 2, 3, 4)){
+  print(i**2)
+}
+```
 
 ```{block, type="alert alert-info"}
 #### Question 4
@@ -124,17 +129,20 @@ Create a new code chunk that uses a code chunk option.
 Write out in your own words what the code chunk option is doing.
 ```
 
-YOUR ANSWER GOES HERE
+```{r, include=TRUE}
 
+vec <- c(1, 3, 5)
+var(vec)
 
-####  Multiple code chunk options
+# Using the option include=TRUE, I choose to include the chunk output in the document.
+```
 
-To have multiple code chunk options you separate them by a comma.
-For example,
-if in addition to suppressing warnings,
-we want to run the code but not output the results,
-then we can add the `include = FALSE` argument to the code chunk
-after the `warning = FALSE` option.
+#### Multiple code chunk options
+
+To have multiple code chunk options you separate them by a comma. For
+example, if in addition to suppressing warnings, we want to run the code
+but not output the results, then we can add the `include = FALSE`
+argument to the code chunk after the `warning = FALSE` option.
 
 ```{block, type="alert alert-info"}
 #### Question 5
@@ -145,47 +153,50 @@ At least one must be different to the ones mentioned above.
 Write in your own words what each code chunk option is doing.
 ```
 
-YOUR ANSWER GOES HERE
+```{r,include=TRUE, results='hide'}
 
+a <- "Hello"
+
+a
+
+# In this code chunk, I choose to include the chunk output in the document, but the results='hide' option hides the text output.
+```
 
 ### 1.5. YAML Header and document output options
 
 R Markdown files contains three types of content:
 
-1. Plain text mixed with simple Markdown formatting.
-2. Code chunks surrounded by <code>```</code>.
-3. An (optional) YAML header surrounded by `---`.
+1.  Plain text mixed with simple Markdown formatting.
+2.  Code chunks surrounded by <code>\`\`\`</code>.
+3.  An (optional) YAML header surrounded by `---`.
 
-You have been introduced the first two types of content,
-but not the third
-(although you probably saw it at the top of this document).
-The (optional) YAML header,
-which is located at the very top of R Markdown files sets some general global parameters,
-including:
+You have been introduced the first two types of content, but not the
+third (although you probably saw it at the top of this document). The
+(optional) YAML header, which is located at the very top of R Markdown
+files sets some general global parameters, including:
 
-- title
-- author
-- output
-- etc
+-   title
+-   author
+-   output
+-   etc
 
 **Example YAML Header**
 
-```
----
-title: "Reproducible Data Science Report"
-author: "Florencia D'Andrea"
-date: "September 4, 2022"
-output: html_document
----
-```
+    ---
+    title: "Reproducible Data Science Report"
+    author: "Florencia D'Andrea"
+    date: "September 4, 2022"
+    output: html_document
+    ---
 
-Most important from a workflow perspective is **output**. Possible output options include:
+Most important from a workflow perspective is **output**. Possible
+output options include:
 
-- `output: html_document`
-- `output: md_document`
-- `output: pdf_document`
-- `output: word_document`
-- `output: xaringan::moon_reader` (xaringan presentation - html)
+-   `output: html_document`
+-   `output: md_document`
+-   `output: pdf_document`
+-   `output: word_document`
+-   `output: xaringan::moon_reader` (xaringan presentation - html)
 
 ```{block, type="alert alert-info"}
 #### Question 6
@@ -194,30 +205,39 @@ rubric={mechanics:1}
 Navigate to the YAML header at the very top of this document
 and edit it so that you include an `author` (yourself) and a `date` (lab due date).
 Include what you added below here as well as a fenced Markdown code block.
+
+author: "Jialing Geng"
+date: "October 1, 2022"
 ```
 
-YOUR ANSWER GOES HERE
+---
+title: "Lab 4 - Introduction to RStudio and R Markdown. Presentations"
+author: "Jialing Geng"
+date: "October 1, 2022"
+output:
+  html_document:
+    toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
 
+Creating R Markdown documents
 
+You can use the "File" menu inside RStudio to create new R Markdown
+documents by selecting: **File \> New File \> R Markdown** This will
+bring you to another menu where you can choose the type of output (don't
+be afraid to pick something, you can always change the `output` type
+once you have the `.Rmd` file).
 
-### Creating R Markdown documents
-
-You can use the "File" menu inside RStudio to create new R Markdown documents by selecting:
-**File > New File > R Markdown**
-This will bring you to another menu where you can choose the type of output
-(don't be afraid to pick something,
-you can always change the `output` type once you have the `.Rmd` file).
-
-To create a written report,
-we generally recommend using the default `output: html_document`
-as it is easier to read than PDF
-(note - LaTeX does not render nicely in such documents sadly,
-so if you are using a lot of LaTeX then you may want to choose `output: pdf_document`).
-If you want to create an `.md` file to publish on GitHub,
-it is recommend to instead use `output: github_document`.
-To get this from the menu above
-you need to navigate to the "From Template" option on the left panel
-and then select "GitHub Document (Markdown)".
+To create a written report, we generally recommend using the default
+`output: html_document` as it is easier to read than PDF (note - LaTeX
+does not render nicely in such documents sadly, so if you are using a
+lot of LaTeX then you may want to choose `output: pdf_document`). If you
+want to create an `.md` file to publish on GitHub, it is recommend to
+instead use `output: github_document`. To get this from the menu above
+you need to navigate to the "From Template" option on the left panel and
+then select "GitHub Document (Markdown)".
 
 ```{block, type="alert alert-info"}
 #### Question 7
@@ -239,7 +259,9 @@ to the GitHub repository for this lab
 and paste the two links below this question.
 ```
 
-YOUR ANSWER GOES HERE
+<https://github.ubc.ca/MDS-2022-23/DSCI_521_lab4_guaiacol/blob/master/test_rmd.html>
+
+<https://github.ubc.ca/MDS-2022-23/DSCI_521_lab4_guaiacol/blob/master/test_rmd.pdf>
 
 ```{block, type="alert alert-info"}
 #### Question 8
@@ -258,7 +280,9 @@ rubric={mechanics:6}
    Paste a link to these files as your answer below.
 ```
 
-YOUR ANSWER GOES HERE
+<https://github.ubc.ca/MDS-2022-23/DSCI_521_lab4_guaiacol/blob/master/markdown_code_chunk_sample.Rmd>
+
+<https://github.ubc.ca/MDS-2022-23/DSCI_521_lab4_guaiacol/blob/master/markdown_code_chunk_sample.html>
 
 ```{block, type="alert alert-info"}
 #### Question 9 (Optional)
@@ -272,7 +296,9 @@ rubric={mechanics:1,reasoning:1}
    What do you see? How is it rendered?
 ```
 
-YOUR ANSWER GOES HERE
+<https://github.ubc.ca/MDS-2022-23/DSCI_521_lab4_guaiacol/blob/master/markdown_code_chunk_sample.md>
+
+The file is rendered as a .md file which stands for markdown documentation. It resembles the format of a README.md that each repo has on GitHub. Also, if I do NOT rename the previous rmd file, the md file will replace the previous html on GitHub once i push it. 
 
 ```{block, type="alert alert-info"}
 #### Question 10
@@ -282,7 +308,7 @@ rubric={mechanics:6}
    Do this in a different file than this one but in the same directory as this RMarkdown file.
    You can use xaringan or Quarto to create the slides. 
    [On the book](https://pages.github.ubc.ca/MDS-2022-23/DSCI_521_platforms-dsci_students/materials/lectures/8-rmarkdown-quarto-slides-ghpages.html) you will find links
-   that will guide you on how to create each type of slide.
+   that will guide you on how to create eagit remote ch type of slide.
    If you are not sure which one to use, 
    it is safer to use Xaringan as Quarto is quite new and
    you will have to learn how to use `.qmd` files.
@@ -299,7 +325,9 @@ rubric={mechanics:6}
 5. Activate GitHub pages and paste the link below.
 ```
 
-YOUR ANSWER GOES HERE
+<https://github.com/THF-d8/new_repo/blob/master/how_to_save_the_world.html>
+
+<https://github.com/THF-d8/new_repo/blob/master/how_to_save_the_world.Rmd>
 
 ```{block, type="alert alert-info"}
 #### (Challenging) Question 11
@@ -314,8 +342,7 @@ for presentations and reports.
 Include advantages and disadvantages for each.
 ```
 
-YOUR ANSWER GOES HERE
+The advantage of using reproducible tools such as R Markdown and Jupyter is that they have version controls and can track the history of my work, and also enables me to share my work with others. Also, once mastered how to use all the commands and functions, it allows much more flexibility in designing and creating my slides than working on non-reproducible tools. For example, I can use code chunks to include complicated computation, calculation and visualization in my slides, and if something goes wrong, I can simply go back to the code and fix it in place without having to modify and transfer the results around. 
+The disadvantange of using reproducible tools is that they don't have a UI that's as straightforward/easy-to-understand as non-reproducible tools such as powerpoint. In order to use reproducible tools well, there is a time committment required in learning all the aspects and functions. 
 
-
-
-
+Non-reproducible tools such as word and powerpoint are easy to learn since they have a user-oriented UI, and I can create slides using these tools without spending much time learning all the functions. The disadvantage of non-reproducible tools is that there is limited amount of operations we can do. For example, we are not able to run code or do complicated computations in them. It's also hard to keep track of the history of versions since there is not version control associated with non-reproducible tools. 
