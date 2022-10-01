@@ -5,6 +5,7 @@ author: "Jialing Geng"
 date: "2022/09/26"
 output:
   xaringan::moon_reader:
+    self_contained: true
     lib_dir: libs
     nature:
       highlightStyle: github
